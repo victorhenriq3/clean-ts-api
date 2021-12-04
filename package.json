@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "Victor <vic.1601@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "git-commit-msg-linter": "^3.2.8"
+  }
 }
