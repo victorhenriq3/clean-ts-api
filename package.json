@@ -10,6 +10,8 @@
   "author": "Victor <vic.1601@outlook.com>",
   "license": "MIT",
   "devDependencies": {
-    "git-commit-msg-linter": "^3.2.8"
+    "@types/node": "^16.11.11",
+    "git-commit-msg-linter": "^3.2.8",
+    "typescript": "^4.5.2"
   }
 }
