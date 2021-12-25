@@ -3,7 +3,9 @@ import { Collection, MongoClient } from 'mongodb'
 export const MongoHelper = {
   client: null as MongoClient,
   async connect (uri: string): Promise<void> {
+    this.uri = uri
     this.client = await MongoClient.connect(uri)
+    console.log('conectou', uri)
   },
 
   async disconnect (): Promise<void> {
