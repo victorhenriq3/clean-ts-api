@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/victorhenriq3/clean-ts-api#readme",
   "devDependencies": {
-    "git-commit-msg-linter": "^4.7.3"
+    "@types/node": "^18.14.0",
+    "git-commit-msg-linter": "^4.7.3",
+    "typescript": "^4.9.5"
   }
 }
