@@ -19,6 +19,11 @@
   "homepage": "https://github.com/victorhenriq3/clean-ts-api#readme",
   "devDependencies": {
     "@types/node": "^18.14.0",
+    "eslint": "8.22.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
     "git-commit-msg-linter": "^4.7.3",
     "typescript": "^4.9.5"
   }
