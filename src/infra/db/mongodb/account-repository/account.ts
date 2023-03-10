@@ -10,5 +10,4 @@ export class AccountMongoRepository implements AddAccountRepository{
         
         return { ...accountData, id: result.insertedId.toString()}
     }
-    
 }
