@@ -85,6 +85,6 @@ describe('LoginController', () => {
         const {sut, validationStub} = makeSut()
         jest.spyOn(validationStub, 'validate').mockReturnValueOnce(new MissingParamError('any_field'))
         const httpResponse = await sut.handle(makeFakeRequest())
-        expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field')))
+        expect(httpResponse).toEqual(badRequest(new MissingParamError('any_field'))) 
       })
 })
