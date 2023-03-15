@@ -1,6 +1,6 @@
-import { AddAccountRepository } from '../../../../data/protocols/db/add-account-repository'
-import { LoadAccountByEmailRepository } from '../../../../data/protocols/db/load-account-by-email-repository';
-import { UpdateAccessTokenRepository } from '../../../../data/protocols/db/update-access-token-repository';
+import { AddAccountRepository } from '../../../../data/protocols/db/account/add-account-repository'
+import { LoadAccountByEmailRepository } from '../../../../data/protocols/db/account/load-account-by-email-repository';
+import { UpdateAccessTokenRepository } from '../../../../data/protocols/db/account/update-access-token-repository';
 import { AccountModel } from '../../../../domain/models/account';
 import { AddAccountModel } from '../../../../domain/usecases/add-account';
 import { MongoHelper } from "../helpers/mongo-helper"
@@ -16,12 +16,6 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
     async loadByEmail(email: string): Promise<AccountModel> {
         const accountCollection = await MongoHelper.getCollection('accounts')
         const account = await accountCollection.findOne({email})
-        // const payload = {
-        //     id: account._id.toString(),
-        //     name: account.name,
-        //     email: account.email,
-        //     password: account.password
-        // }
 
         return account && MongoHelper.map(account)
     }
