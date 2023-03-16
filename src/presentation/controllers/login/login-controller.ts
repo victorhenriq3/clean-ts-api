@@ -30,7 +30,5 @@ export class LoginController implements Controller {
         } catch (error) {
             return serverError(error)
         }
-       
     }
-
 }
