@@ -118,5 +118,6 @@ dist
 
 /.idea/
 data
+!src/data
 .vscode
 /.vscode/
