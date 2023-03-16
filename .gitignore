@@ -118,3 +118,5 @@ dist
 
 /.idea/
 data
+.vscode
+/.vscode/
