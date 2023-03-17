@@ -38,7 +38,7 @@ export const forbidden = (error: Error):HttpResponse  => {
 
 export const noContent = ():HttpResponse => {
   return {
-    statusCode: 200,
+    statusCode: 204,
     body: null
   }
 }
