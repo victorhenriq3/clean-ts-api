@@ -8,7 +8,7 @@ describe('AddSurveyValidation Factory', () => {
     test('Should Call validation composite with all validations', () => {
         makeAddSurveyValidation()
         const validations: Validation[] = []
-        for (const field of ['question', 'answers']){
+        for (const field of ['question', 'answer']){
             validations.push( new RequiredFieldValidation(field))
         }
         expect(ValidationComposite).toHaveBeenCalledWith(validations)
