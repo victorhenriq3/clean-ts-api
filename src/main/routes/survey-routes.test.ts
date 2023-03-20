@@ -68,7 +68,7 @@ describe('Survey Routes', () => {
                     answer: 'answer 1'
                    }]
                 })
-                .expect(403)
+                .expect(204)
         })
     })
 })
