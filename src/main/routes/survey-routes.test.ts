@@ -39,6 +39,7 @@ describe('Survey Routes', () => {
             })
             .expect(403)
         })
+        
         test('Should return 204 on AddSurvey with valid token', async () => {
             const res = await accountCollection.insertOne({
                 name: 'Victor',
@@ -68,6 +69,6 @@ describe('Survey Routes', () => {
                    }]
                 })
                 .expect(403)
-            })
+        })
     })
 })
