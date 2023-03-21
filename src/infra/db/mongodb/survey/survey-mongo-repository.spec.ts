@@ -12,7 +12,7 @@ const makeSut = (): SurveyMongoRepository => {
 
 describe('Survey Mongo Repository', () => {
     beforeAll(async () => {
-        await MongoHelper.connect(process.env.MONGO_URL);
+        await MongoHelper.connect(process.env.MONGO_URL || '');
         MockDate.set(new Date())
     })
 
