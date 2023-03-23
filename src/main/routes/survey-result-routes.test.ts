@@ -49,5 +49,28 @@ describe('Survey Routes', () => {
             .send({answer: 'any_answer'})
             .expect(403)
         })
+
+        test('Should return 200 on saveSurveyResult with valid token', async () => {
+            const accessToken = await makeAccessToken()
+            const res = await surveyCollection.insertOne(
+                {
+                    question: 'any_question',
+                    answers: [
+                        {
+                            image: 'any_image',
+                            answer: 'Answer 1'
+                        },
+                        {
+                            answer: 'other_answer'
+                        }
+                    ],
+                    date: new Date()
+                })
+            await request(app)
+                .put(`/api/surveys/${String(res.insertedId)}/results`)
+                .set('x-access-token', accessToken)
+                .send({answer: 'Answer 1'})
+                .expect(200)
+        })
     })
 })
