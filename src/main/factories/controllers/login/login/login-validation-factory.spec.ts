@@ -2,17 +2,10 @@ import { Validation } from '@/presentation/protocols/validation'
 import { ValidationComposite, RequiredFieldValidation, EmailValidation } from '@/validation/validators'
 import { makeLoginValidation } from './login-validation-factory'
 import { EmailValidator } from '@/validation/protocols/email-validator'
+import { mockEmailValidator } from '@/validation/test/mock-email-validator'
 
 jest.mock('../../../../../validation/validators/validation-composite')
 
-const makeEmailValidator = (): EmailValidator => {
-    class EmailValidatorStub implements EmailValidator{
-      isValid(email: string): boolean{
-        return true
-      }
-    }
-    return new EmailValidatorStub()
-  }
 
 describe('LoginValidationFactory', () => {
     test('Should Call validation composite with all validations', () => {
@@ -21,7 +14,7 @@ describe('LoginValidationFactory', () => {
         for (const field of ['email', 'password']){
             validations.push( new RequiredFieldValidation(field))
         }
-        validations.push(new EmailValidation('email', makeEmailValidator()))
+        validations.push(new EmailValidation('email', mockEmailValidator()))
         expect(ValidationComposite).toHaveBeenCalledWith(validations)
     })
 })

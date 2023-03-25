@@ -2,6 +2,7 @@ import { LoadSurveysController, SurveyModel, LoadSurveys } from './load-survey-c
 import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import MockDate from 'mockdate'
 import { mockSurveysModel, throwError } from '@/domain/test'
+import { mockLoadSurveys } from '@/presentation/test'
 
 
 type SutTypes = {
@@ -9,17 +10,9 @@ type SutTypes = {
     loadSurveysStub: LoadSurveys
 }
 
-const makeLoadSurveys = (): LoadSurveys => {
-    class LoadSurveysStub implements LoadSurveys {
-        async load(): Promise<SurveyModel[]>{
-            return new Promise(resolve => resolve(mockSurveysModel()))
-        }
-    }
-    return new LoadSurveysStub()
-}
 
 const makeSut = (): SutTypes => {
-    const loadSurveysStub = makeLoadSurveys()
+    const loadSurveysStub = mockLoadSurveys()
     const sut = new LoadSurveysController(loadSurveysStub)
 
     return {
