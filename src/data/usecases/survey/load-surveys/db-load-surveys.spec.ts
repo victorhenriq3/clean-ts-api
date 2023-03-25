@@ -2,37 +2,9 @@ import { SurveyModel } from '@/domain/models/survey'
 import { LoadSurveysRepository } from '@/data/protocols/db/survey/load-surveys-repository'
 import {DbLoadSurveys} from './db-load-surveys'
 import MockDate from 'mockdate'
+import { mockSurveysModel, throwError } from '@/domain/test'
+import { mockLoadSurveysRepository } from '@/data/test'
 
-const makeFakeSurveys = (): SurveyModel[] => {
-    return [{
-        id: 'any_id',
-        question: 'any_question',
-        answers: [{
-            image: 'any_image',
-            answer: 'any_answer'
-        }],
-        date: new Date()
-    },
-    {
-        id: 'other_id',
-        question: 'other_question',
-        answers: [{
-            image: 'other_image',
-            answer: 'other_answer'
-        }],
-        date: new Date()
-    },
-]
-}
-
-const makeLoadSurveyRepository = (): LoadSurveysRepository => {
-    class LoadSurveysRepositoryStub implements LoadSurveysRepository {
-        async loadAll(): Promise<SurveyModel[]> {
-            return new Promise(resolve => resolve(makeFakeSurveys()))
-        }
-    }
-    return new LoadSurveysRepositoryStub()
-}
 
 type SutTypes = {
     sut: DbLoadSurveys
@@ -40,7 +12,7 @@ type SutTypes = {
 }
 
 const makeSut = ():SutTypes => {
-    const loadSurveysRepositoryStub = makeLoadSurveyRepository()
+    const loadSurveysRepositoryStub = mockLoadSurveysRepository()
     const sut = new DbLoadSurveys(loadSurveysRepositoryStub)
 
     return {
@@ -69,13 +41,13 @@ describe('DbLoadSurveys', () => {
     test('Should return a list of Surveys on success', async () => {
         const {sut, loadSurveysRepositoryStub} = makeSut()
         const surveys = await sut.load()
-        expect(surveys).toEqual(makeFakeSurveys())
+        expect(surveys).toEqual(mockSurveysModel())
     })
 
     test('Should throw if LoadSurveysRepository throws', async () => {
         const {sut, loadSurveysRepositoryStub} = makeSut()
         jest.spyOn(loadSurveysRepositoryStub, 'loadAll')
-            .mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+            .mockImplementationOnce(throwError)
         const promise = sut.load()
         await expect(promise).rejects.toThrow()
     })
