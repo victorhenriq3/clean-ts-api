@@ -4,7 +4,8 @@ module.exports = {
   coverageDirectory: 'coverage',
   collectCovarageFrom: [
     '<rootDir>/src/**/**.ts',
-    '!<rootDir>/src/main/**'
+    '!<rootDir>/src/main/**',
+    '!**/test/**'
   ],
   testEnvironment: 'node',
   transform: {
