@@ -2,9 +2,9 @@
 import { InvalidParamError } from "@/presentation/errors"
 import { forbidden, ok, serverError } from "@/presentation/helpers/http/http-helper"
 import { SaveSurveyResultController } from "./save-survey-result-controller"
-import { HttpRequest, LoadSurveyById, SurveyModel, SaveSurveyResultParams, SaveSurveyResult, SurveyResultModel } from "./save-survey-result-controller-protocols"
+import { HttpRequest, LoadSurveyById, SaveSurveyResult } from "./save-survey-result-controller-protocols"
 import MockDate from 'mockdate'
-import { mockSurveyModel, mockSurveyResultModel, throwError } from "@/domain/test"
+import { mockSurveyResultModel, throwError } from "@/domain/test"
 import { mockLoadSurveyById, mockSaveSurveyResult } from "@/presentation/test"
 
 const makeFakeRequest = ():HttpRequest => ({
