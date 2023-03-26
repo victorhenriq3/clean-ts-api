@@ -1,5 +1,10 @@
+import { badRequest } from "./components/bad-request";
+import { notFound } from "./components/not-found";
+import { serverError } from "./components/server-error";
+import { unauthorized } from "./components/unauthorized";
 import { loginPath } from "./paths/login-path";
 import { accountSchema } from "./schemas/account-schema";
+import { errorSchema } from "./schemas/error-schema";
 import { loginParamsSchema } from "./schemas/login-params-schema";
 
 export default {
@@ -8,6 +13,10 @@ export default {
         title: 'Clean node api',
         description: 'Api do curso do mango para realizar enquetes entre programadores',
         version: '1.0.0'
+    },
+    license: {
+        name: 'ISC',
+        url: 'https://opensource.org/license/isc-license-txt/'
     },
     servers: [{
         url: '/api'
@@ -20,6 +29,13 @@ export default {
     },
     schemas: {
         account: accountSchema,
-        loginParams: loginParamsSchema
+        loginParams: loginParamsSchema,
+        error: errorSchema
+    },
+    components: {
+        badRequest: badRequest,
+        serverError: serverError,
+        unauthorized: unauthorized,
+        notFound: notFound
     }
 }
