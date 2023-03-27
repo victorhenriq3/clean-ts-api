@@ -5,14 +5,17 @@ import { serverError } from "./components/server-error";
 import { unauthorized } from "./components/unauthorized";
 import { loginPath } from "./paths/login-path";
 import { signupPath } from "./paths/singup-path";
+import { surveyResultPath } from "./paths/survey-result-path";
 import { surveyPath } from "./paths/surveys-path";
 import { accountSchema } from "./schemas/account-schema";
 import { addSurveyParamsSchema } from "./schemas/add-survey-params-schema";
 import { apiKeyAuthSchema } from "./schemas/api-key-auth-schema";
 import { errorSchema } from "./schemas/error-schema";
 import { loginParamsSchema } from "./schemas/login-params-schema";
+import { saveSurveyParamsSchema } from "./schemas/save-survey-params-schema";
 import { signupParamsSchema } from "./schemas/singup-params-schema";
 import { surveyAnswerSchema } from "./schemas/survey-answer-schema";
+import { surveyResultSchema } from "./schemas/survey-result-schema";
 import { surveySchema } from "./schemas/survey-schema";
 import { surveysSchema } from "./schemas/surveys-schema";
 
@@ -38,7 +41,8 @@ export default {
     paths: {
         '/login': loginPath,
         '/surveys': surveyPath,
-        '/signup': signupPath
+        '/signup': signupPath,
+        'surveys/:{surveyId}/results': surveyResultPath
     },
     schemas: {
         account: accountSchema,
@@ -58,6 +62,8 @@ export default {
         serverError: serverError,
         unauthorized: unauthorized,
         notFound: notFound,
-        forbidden: forbidden
+        forbidden: forbidden,
+        saveSurveyParams: saveSurveyParamsSchema,
+        surveyResult: surveyResultSchema
     }
 }
